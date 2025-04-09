@@ -1,5 +1,6 @@
 import React from 'react';
 import image from "../assets/1.png"
+import image1 from '../assets/2.png'
 // --- Example Portfolio Data ---
 // In a real app, you'd likely fetch this from a CMS or have it in a separate data file.
 const portfolioItems = [
@@ -15,7 +16,7 @@ const portfolioItems = [
     id: 2,
     title: 'Ecommerce Site',
     description: 'Designed and developed a complex e-commerce site entirely within react.',
-    imageUrl: 'https://via.placeholder.com/400x250/ff6347/ffffff?text=Webflow+Showcase', // Replace with your image path
+    imageUrl: image1, // Replace with your image path
     liveUrl: 'https://ecommerce-nxuv.vercel.app/',
     codeUrl: 'https://github.com/ishimwesarah/Ecommerce'
   },
