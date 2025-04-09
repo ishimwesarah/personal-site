@@ -1,0 +1,322 @@
+/* --- Global Styles & Resets --- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap'); /* Example Monospace Font */
+
+:root {
+  --bg-color: #fdfdfb; /* Slightly off-white, adjust as needed */
+  --text-color: #4b0082; /* Indigo/Dark Violet */
+  --name-color: #6a0dad; /* Slightly brighter purple for name */
+  --highlight-color: #ff6347; /* Tomato/Orange-Red */
+  --border-color: var(--highlight-color);
+  --navbar-height: 60px;
+  --base-font: 'Source Code Pro', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--base-font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid #eee;
+  padding: 0 5%;
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Or sticky */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: var(--name-color);
+}
+.navbar-logo a:hover {
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-left: 25px;
+}
+
+.navbar-links a {
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+/* --- Burger Menu (Mobile) --- */
+.burger-menu {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-color);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+/* --- Home Page Styles --- */
+.home-container {
+  display: flex;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  padding: var(--navbar-height) 5% 5%; /* Account for fixed navbar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.image-container {
+  flex: 0 0 45%; /* Takes up 45% of the width, doesn't grow or shrink */
+  padding-right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 80vh;
+  /* Optional: Apply a filter to mimic the sketch style if the source isn't already styled */
+  /* filter: grayscale(1) contrast(1.1) brightness(1.1); */
+  object-fit: contain;
+}
+
+.text-container {
+  flex: 1; /* Takes remaining space */
+  position: relative; /* For positioning corner brackets */
+  padding: 40px; /* Add padding for bracket spacing */
+  max-width: 600px; /* Limit text width for readability */
+  margin: 0 auto; /* Center text block if image container shrinks */
+}
+
+/* Corner Brackets */
+.corner {
+  position: absolute;
+  width: 30px; /* Size of the bracket lines */
+  height: 30px;
+  border-style: solid;
+  border-color: var(--border-color);
+}
+
+.corner-top-left {
+  top: 0;
+  left: 0;
+  border-width: 4px 0 0 4px;
+}
+
+.corner-top-right {
+  top: 0;
+  right: 0;
+  border-width: 4px 4px 0 0;
+}
+
+.corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 4px 4px;
+}
+
+.corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  border-width: 0 4px 4px 0;
+}
+
+/* Text Styling within Text Container */
+.text-container p,
+.text-container h1,
+.text-container h2 {
+  margin-bottom: 1.5rem;
+}
+
+.text-container .greeting {
+  font-size: 1.1rem;
+}
+
+.text-container .name {
+  font-size: 2.8rem; /* Larger name */
+  font-weight: bold;
+  color: var(--name-color);
+  letter-spacing: 1px;
+  /* Add subtle text shadow or different font if needed for 'sketched' feel */
+  margin-bottom: 0.5rem; /* Closer to nickname */
+}
+
+.text-container .nickname {
+  font-size: 2rem; /* Slightly smaller nickname */
+  font-weight: bold;
+  color: var(--name-color);
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+.text-container .role {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.text-container .highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+.text-container .closing {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+
+/* --- Responsive Design --- */
+
+/* Tablets and Smaller Desktops */
+@media (max-width: 1024px) {
+  .home-container {
+      padding-left: 3%;
+      padding-right: 3%;
+  }
+  .image-container {
+      flex: 0 0 40%;
+  }
+  .text-container {
+      padding: 30px;
+  }
+   .text-container .name {
+      font-size: 2.4rem;
+  }
+   .text-container .nickname {
+      font-size: 1.8rem;
+  }
+   .corner {
+      width: 25px;
+      height: 25px;
+      border-width: 3px; /* Adjust border thickness if needed */
+  }
+   .corner-top-left { border-width: 3px 0 0 3px; }
+   .corner-top-right { border-width: 3px 3px 0 0; }
+   .corner-bottom-left { border-width: 0 0 3px 3px; }
+   .corner-bottom-right { border-width: 0 3px 3px 0; }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 0 5%;
+  }
+
+  .navbar-links {
+      /* Style for mobile menu - hidden by default, shown on toggle */
+      display: none; /* Hide links by default on mobile */
+      position: absolute;
+      top: var(--navbar-height);
+      left: 0;
+      background-color: rgba(253, 253, 251, 0.98); /* Slightly transparent background */
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .navbar-links.active { /* Add this class via JS on burger click */
+      display: flex;
+  }
+
+  .navbar-links li {
+      margin: 10px 0;
+      margin-left: 0; /* Reset margin */
+  }
+
+  .burger-menu {
+      display: flex; /* Show burger menu icon */
+  }
+
+  .home-container {
+      flex-direction: column; /* Stack image and text vertically */
+      padding-top: calc(var(--navbar-height) + 20px); /* Add more space below navbar */
+      text-align: center; /* Center text on mobile */
+      padding-left: 5%;
+      padding-right: 5%;
+  }
+
+  .image-container {
+      flex: 0 0 auto; /* Reset flex properties */
+      width: 70%; /* Adjust image width */
+      max-width: 300px; /* Max size */
+      padding-right: 0;
+      margin-bottom: 30px; /* Space between image and text */
+  }
+
+  .text-container {
+      padding: 25px; /* Adjust padding */
+      max-width: 100%; /* Allow text block to use more width */
+      margin: 0; /* Reset margin */
+  }
+
+  .text-container .name {
+      font-size: 2rem;
+  }
+  .text-container .nickname {
+      font-size: 1.6rem;
+  }
+   .text-container p, .text-container .role, .text-container .closing {
+      font-size: 1rem;
+  }
+
+   .corner {
+      width: 20px;
+      height: 20px;
+      border-width: 3px; /* Adjust border thickness if needed */
+  }
+   .corner-top-left { border-width: 3px 0 0 3px; }
+   .corner-top-right { border-width: 3px 3px 0 0; }
+   .corner-bottom-left { border-width: 0 0 3px 3px; }
+   .corner-bottom-right { border-width: 0 3px 3px 0; }
+}
